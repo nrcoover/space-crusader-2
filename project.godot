@@ -22,7 +22,7 @@ window/stretch/mode="canvas_items"
 
 [dotnet]
 
-project/assembly_name="SpaceCrusader"
+project/assembly_name="SpaceCrusader2"
 
 [editor]
 
