@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://duvdeb80mtyg6" path="res://Assets/Textures/flame_04.png" id="1_nu8qp"]
 
 [sub_resource type="Gradient" id="Gradient_nu8qp"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.6431373)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.5568628)
 
 [sub_resource type="Gradient" id="Gradient_c0t5g"]
-colors = PackedColorArray(0, 0.33333334, 0.44313726, 1, 0.9719978, 0.45342875, 0.59719044, 1)
+colors = PackedColorArray(0, 0.33333334, 0.44313726, 1, 0.86044216, 0.399271, 0.525045, 1)
 
 [sub_resource type="Gradient" id="Gradient_3rsbh"]
 offsets = PackedFloat32Array(0, 0.5425532, 1)
