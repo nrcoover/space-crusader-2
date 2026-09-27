@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://fqg817ao1rgs"]
 
+[ext_resource type="PackedScene" uid="uid://bo6oq0pbaoiyg" path="res://Scenes/Stars/Stars.tscn" id="1_vbawi"]
+
 [node name="Level" type="Node" unique_id=1890165430]
+
+[node name="Stars" parent="." unique_id=1285456462 instance=ExtResource("1_vbawi")]
