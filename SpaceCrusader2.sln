@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceCrusader2", "SpaceCrusader2.csproj", "{BD305324-B453-4693-8D3F-34D0E0C9ECEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD305324-B453-4693-8D3F-34D0E0C9ECEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD305324-B453-4693-8D3F-34D0E0C9ECEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD305324-B453-4693-8D3F-34D0E0C9ECEA}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{BD305324-B453-4693-8D3F-34D0E0C9ECEA}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{BD305324-B453-4693-8D3F-34D0E0C9ECEA}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{BD305324-B453-4693-8D3F-34D0E0C9ECEA}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

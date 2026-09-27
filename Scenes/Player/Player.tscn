@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cexarfbemv5n"]
+
+[ext_resource type="PackedScene" uid="uid://8ndhxtjwpdk3" path="res://Scenes/PlayerThrust/PlayerThrust.tscn" id="1_ft8w5"]
+[ext_resource type="Script" uid="uid://bk55ys87u42br" path="res://Scenes/Player/Player.cs" id="1_h54ih"]
+[ext_resource type="Texture2D" uid="uid://c5vwk1v4r4fv7" path="res://Assets/Images/player.png" id="1_s0eop"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0eop"]
+radius = 49.09175
+
+[node name="Player" type="Area2D" unique_id=436121510]
+script = ExtResource("1_h54ih")
+
+[node name="PlayerThrust" parent="." unique_id=698733294 instance=ExtResource("1_ft8w5")]
+position = Vector2(42, 16)
+
+[node name="PlayerThrust2" parent="." unique_id=1364405130 instance=ExtResource("1_ft8w5")]
+position = Vector2(-42, 16)
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=646028637]
+position = Vector2(0, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=171419733]
+texture = ExtResource("1_s0eop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1058031198]
+shape = SubResource("CircleShape2D_s0eop")
