@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://hv26ofpqs4ct"]
+
+[ext_resource type="PackedScene" uid="uid://c3a2dss42f67n" path="res://Scenes/Projectile/Projectile.tscn" id="1_ob87d"]
+[ext_resource type="Script" uid="uid://cbwrcpo65tnuc" path="res://Scenes/Projectile/EnemyBomb.cs" id="2_2vjpk"]
+[ext_resource type="Texture2D" uid="uid://dea43c0gnmi6i" path="res://Assets/Images/Bomb.png" id="2_fj0le"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ob87d"]
+radius = 21.023796
+
+[node name="EnemyBomb" unique_id=85650039 node_paths=PackedStringArray("_sprite") instance=ExtResource("1_ob87d")]
+collision_layer = 72
+collision_mask = 5
+script = ExtResource("2_2vjpk")
+_sprite = NodePath("Sprite2D")
+_direction = Vector2(0, 1)
+_isMovingTowardsPlayer = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=904177555]
+position = Vector2(0, 16)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_fj0le")
+offset = Vector2(0, -26.666666)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1169443599]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_ob87d")
+
+[node name="Notifier" parent="." index="2" unique_id=246919367]
+rect = Rect2(-28, -42, 55, 85)

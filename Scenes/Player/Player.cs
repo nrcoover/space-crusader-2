@@ -10,6 +10,11 @@ public partial class Player : Area2D
 	private Vector2 _upperLeft;
 	private Vector2 _lowerRight;
 
+	public override void _EnterTree() 
+	{
+		AddToGroup(Constants.GroupName.PLAYER);
+	}
+
 	public override void _Ready()
 	{
 		SetLimits();
