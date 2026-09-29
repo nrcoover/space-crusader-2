@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Projectile : Area2D
+public partial class Projectile : Area2D, IPoolItem
 {
 	[Export] private float _speed = 350.0f;
 	[Export] private Vector2 _direction = Vector2.Zero;
@@ -16,13 +16,26 @@ public partial class Projectile : Area2D
 	{
 		SubscribeToSignals();
 		IdentifyPlayer();
-		SetDirection();
-		SetVelocity();
+		DeActivate();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		SetPosition(delta);
+	}
+
+	public void Activate() {
+		CustomUtils.ActivateArea2D(this, true);
+		SetDirection();
+		SetVelocity();
+		SetPhysicsProcess(true);
+		Show();
+	}
+
+	public void DeActivate() {
+		CustomUtils.ActivateArea2D(this, false);
+		SetPhysicsProcess(false);
+		Hide();
 	}
 
 	private void SubscribeToSignals() {
@@ -32,18 +45,18 @@ public partial class Projectile : Area2D
 	}
 
 	private void OnLifeTimeExpired() {
-		GD.Print($"{Name} OnLifeTimeExpired!");
-		CallDeferred(MethodName.QueueFree);
+		// GD.Print($"{Name} OnLifeTimeExpired!");
+		// CallDeferred(MethodName.QueueFree);
 	}
 
 	private void OnScreenExited() {
 		GD.Print($"{Name} OnScreenExited!");
-		CallDeferred(MethodName.QueueFree);
+		DeActivate();
 	}
 
 	private void OnAreaEntered(Area2D area) {
 		GD.Print($"{Name} OnAreaEntered!");
-		CallDeferred(MethodName.QueueFree);
+		DeActivate();
 	}
 
 	private void IdentifyPlayer() {

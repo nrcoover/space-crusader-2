@@ -2,22 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bo6oq0pbaoiyg" path="res://Scenes/Stars/Stars.tscn" id="1_vbawi"]
 [ext_resource type="PackedScene" uid="uid://cexarfbemv5n" path="res://Scenes/Player/Player.tscn" id="2_3hkb6"]
-[ext_resource type="PackedScene" uid="uid://hv26ofpqs4ct" path="res://Scenes/Projectile/EnemyBomb.tscn" id="3_k2uda"]
-[ext_resource type="PackedScene" uid="uid://bsn6kf7tvruov" path="res://Scenes/Projectile/EnemyLaser.tscn" id="4_ksici"]
-[ext_resource type="PackedScene" uid="uid://bk2pycyugbje5" path="res://Scenes/Projectile/PlayerLaser.tscn" id="5_8gphe"]
+[ext_resource type="PackedScene" uid="uid://35on0qom10fx" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_4dwx7"]
 
 [node name="Level" type="Node" unique_id=1890165430]
 
 [node name="Stars" parent="." unique_id=1285456462 instance=ExtResource("1_vbawi")]
 
-[node name="Player" parent="Stars" unique_id=436121510 instance=ExtResource("2_3hkb6")]
+[node name="Player" parent="." unique_id=436121510 instance=ExtResource("2_3hkb6")]
 position = Vector2(690, 887)
 
-[node name="EnemyBomb" parent="." unique_id=85650039 instance=ExtResource("3_k2uda")]
-position = Vector2(174, 118)
-
-[node name="EnemyLaser" parent="." unique_id=1016777276 instance=ExtResource("4_ksici")]
-position = Vector2(694, 643)
-
-[node name="PlayerLaser" parent="." unique_id=1817902488 instance=ExtResource("5_8gphe")]
-position = Vector2(1162, 787)
+[node name="ObjectContainer" parent="." unique_id=1429712529 instance=ExtResource("3_4dwx7")]
