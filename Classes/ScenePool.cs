@@ -25,7 +25,29 @@ public class ScenePool
     }
   }
 
-  private void AddNewItem()
+  public void ActivateNext(Vector2 position) {
+    Log($"ActivateNext Active: {ActiveCount}/{_items.Count}");
+
+    foreach (var node in _items)
+    {
+      if (!node.Visible)
+      {
+        Log($"Resusing instance {node.Name}");
+        node.Show();
+        node.GlobalPosition = position;
+        ((IPoolItem)node).Activate();
+        return;
+      }
+    }
+
+    Log($"Nothing free, extending pool");
+    Node2D newItem = AddNewItem();
+    newItem.Show();
+    newItem.GlobalPosition = position;
+    ((IPoolItem)newItem).Activate();
+  }
+
+  private Node2D AddNewItem()
   {
     Node2D newItem = _packedScene.Instantiate<Node2D>();
 
@@ -39,6 +61,8 @@ public class ScenePool
     _items.Add(newItem);
 
     Log($"New instance {newItem.Name} total: {_items.Count}");
+
+    return newItem;
   }
 
   private void Log(string message) 

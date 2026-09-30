@@ -29,7 +29,6 @@ public partial class Projectile : Area2D, IPoolItem
 		SetDirection();
 		SetVelocity();
 		SetPhysicsProcess(true);
-		Show();
 	}
 
 	public void DeActivate() {

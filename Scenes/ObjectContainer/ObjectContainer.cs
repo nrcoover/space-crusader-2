@@ -57,5 +57,7 @@ public partial class ObjectContainer : Node
 			pool = new ScenePool(scenePoolSize, scene, this);
 			_pools.Add(scene, pool);
 		}
+
+		pool.ActivateNext(position);
 	}
 }
