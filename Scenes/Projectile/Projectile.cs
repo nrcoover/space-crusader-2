@@ -8,6 +8,10 @@ public partial class Projectile : Area2D, IPoolItem
 	[Export] private bool _isMovingTowardsPlayer = false;
 	[Export] private VisibleOnScreenNotifier2D _notifier;
 	[Export] private LifeTime _lifeTime;
+	[Export] private PackedScene _explosionScene;
+	[Export] private Marker2D _explosionMarker;
+	[Export] private bool _usesMarker;
+	[Export] private float _explosionMargin = 30.0f;
 
 	private Player _playerRef;	
 	private Vector2 _velocity;
@@ -55,6 +59,19 @@ public partial class Projectile : Area2D, IPoolItem
 
 	private void OnAreaEntered(Area2D area) {
 		GD.Print($"{Name} OnAreaEntered!");
+
+		var explosionPosition = _explosionMarker.GlobalPosition;
+
+		if (!_usesMarker)
+		{
+			Vector2 direction = GlobalPosition.DirectionTo(area.GlobalPosition).Normalized();
+			explosionPosition = GlobalPosition + direction * _explosionMargin;
+		}
+
+		SignalManager.EmitSpawnPoolObject(
+			_explosionMarker.GlobalPosition, _explosionScene
+		);
+
 		DeActivate();
 	}
 

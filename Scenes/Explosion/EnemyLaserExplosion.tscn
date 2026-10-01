@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://eyii85lowr8d"]
+
+[ext_resource type="PackedScene" uid="uid://bfuf7fqe5siqf" path="res://Scenes/Explosion/Explosion.tscn" id="1_rkxal"]
+[ext_resource type="Texture2D" uid="uid://dj030lwgni7m7" path="res://Assets/Textures/MagicSmall.png" id="2_de2xs"]
+[ext_resource type="AudioStream" uid="uid://cvaf3du0nkll8" path="res://Assets/Sounds/172334__knova__grenade_knova.wav" id="3_x7d4e"]
+
+[sub_resource type="Curve" id="Curve_de2xs"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.24025974, 0.31847966), 0.0, 0.0, 0, 0, Vector2(0.7987013, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="EnemyLaserExplosion" unique_id=1925007399 instance=ExtResource("1_rkxal")]
+z_index = 110
+
+[node name="CPUParticles2D" parent="." index="0" unique_id=1744808512]
+texture = ExtResource("2_de2xs")
+lifetime = 0.85
+emission_shape = 0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+radial_accel_min = 0.0
+radial_accel_max = 0.0
+scale_amount_min = 2.5
+scale_amount_max = 4.0
+color = Color(3.5629182, 1.5322309, 1.1691278, 1)
+color_ramp = null
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_de2xs")
+
+[node name="AudioStreamPlayer2D" parent="." index="1" unique_id=1288790364]
+stream = ExtResource("3_x7d4e")
+attenuation = 0.25000003
