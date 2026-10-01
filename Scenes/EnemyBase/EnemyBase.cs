@@ -1,5 +1,6 @@
 using Godot;
 
+// TODO: Create new giant robot enemy to deliver bombs; use regular size robot enemy to fire two lasers; convert _shootPoint to an array of Marker2Ds.
 public partial class EnemyBase : PathFollow2D
 {
 	[Export] private float _speed = 100;
