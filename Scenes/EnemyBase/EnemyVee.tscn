@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://7ssd6ty57smb"]
+
+[ext_resource type="PackedScene" uid="uid://b5j8nlah0sckb" path="res://Scenes/EnemyBase/EnemyBase.tscn" id="1_1bh77"]
+[ext_resource type="Texture2D" uid="uid://bud8m5ivb4vgw" path="res://Assets/Images/Enemy1.png" id="2_n3nei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h21tv"]
+radius = 53.0
+
+[node name="EnemyVee" unique_id=287976235 node_paths=PackedStringArray("_shootPoint") instance=ExtResource("1_1bh77")]
+_shootPoint = NodePath("ShootPoint")
+
+[node name="Sprite2D" parent="." index="0" unique_id=101752845]
+rotation = 3.1415927
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_n3nei")
+
+[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(299925371) index="0" unique_id=1693853168]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_h21tv")
+
+[node name="ShootPoint" parent="." index="3" unique_id=1851279631]
+position = Vector2(0, 45)

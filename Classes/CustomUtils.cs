@@ -6,4 +6,9 @@ public static class CustomUtils {
     area.SetDeferred(Area2D.PropertyName.Monitoring, active);
     area.SetDeferred(Area2D.PropertyName.Monitorable, active);
   }
+
+  public static void SetAndStartTimer(Timer timer, float target, float variance)
+  {
+    timer.Start(target + GD.RandRange(-variance, variance));
+  }
 }

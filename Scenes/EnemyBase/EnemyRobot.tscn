@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://byx5rfev5w7wu"]
+
+[ext_resource type="PackedScene" uid="uid://b5j8nlah0sckb" path="res://Scenes/EnemyBase/EnemyBase.tscn" id="1_ooqht"]
+[ext_resource type="PackedScene" uid="uid://hv26ofpqs4ct" path="res://Scenes/Projectile/EnemyBomb.tscn" id="2_cci5b"]
+[ext_resource type="Texture2D" uid="uid://mwd5y0jd64nk" path="res://Assets/Images/Enemy3.png" id="2_j6d8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ooqht"]
+radius = 48.0
+
+[node name="EnemyRobot" unique_id=287976235 instance=ExtResource("1_ooqht")]
+_projectile = ExtResource("2_cci5b")
+
+[node name="Sprite2D" parent="." index="0" unique_id=101752845]
+texture = ExtResource("2_j6d8t")
+
+[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(299925371) index="0" unique_id=1693853168]
+shape = SubResource("CircleShape2D_ooqht")
+
+[node name="ShootPoint" parent="." index="3" unique_id=1851279631]
+position = Vector2(0, 21)
