@@ -6,6 +6,8 @@ public partial class Player : Area2D
 	private const float MARGIN = 64.0f;
 
 	[Export] private float _speed = 500;
+	[Export] private PackedScene _playerLaser;
+	[Export] private Marker2D _shootPoint;
 
 	private Vector2 _upperLeft;
 	private Vector2 _lowerRight;
@@ -30,6 +32,7 @@ public partial class Player : Area2D
 	public override void _PhysicsProcess(double delta)
 	{
 		MovePlayer(delta);
+		ShootLaser();
 	}
 
 	private Vector2 GetInput() {
@@ -46,5 +49,13 @@ public partial class Player : Area2D
 		
 		Position += moveDirection * (float)delta * _speed;
 		Position = Position.Clamp(_upperLeft, _lowerRight);
+	}
+
+	private void ShootLaser()
+	{
+		if (Input.IsActionJustPressed("shoot"))
+		{
+			SignalManager.EmitSpawnPoolObject(_shootPoint.GlobalPosition, _playerLaser);
+		}
 	}
 }

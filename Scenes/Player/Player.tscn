@@ -3,12 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://8ndhxtjwpdk3" path="res://Scenes/PlayerThrust/PlayerThrust.tscn" id="1_ft8w5"]
 [ext_resource type="Script" uid="uid://bk55ys87u42br" path="res://Scenes/Player/Player.cs" id="1_h54ih"]
 [ext_resource type="Texture2D" uid="uid://c5vwk1v4r4fv7" path="res://Assets/Images/player.png" id="1_s0eop"]
+[ext_resource type="PackedScene" uid="uid://bk2pycyugbje5" path="res://Scenes/Projectile/PlayerLaser.tscn" id="2_ude3g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0eop"]
 radius = 49.09175
 
-[node name="Player" type="Area2D" unique_id=436121510]
+[node name="Player" type="Area2D" unique_id=436121510 node_paths=PackedStringArray("_shootPoint")]
+z_index = 50
 script = ExtResource("1_h54ih")
+_playerLaser = ExtResource("2_ude3g")
+_shootPoint = NodePath("ShootPoint")
 
 [node name="PlayerThrust" parent="." unique_id=698733294 instance=ExtResource("1_ft8w5")]
 position = Vector2(42, 16)
@@ -17,7 +21,7 @@ position = Vector2(42, 16)
 position = Vector2(-42, 16)
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=646028637]
-position = Vector2(0, -50)
+position = Vector2(0, -53)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=171419733]
 texture = ExtResource("1_s0eop")
