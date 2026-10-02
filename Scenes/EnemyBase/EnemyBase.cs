@@ -5,6 +5,9 @@ public partial class EnemyBase : PathFollow2D
 {
 	[Export] private float _speed = 100;
 	[Export] private PackedScene _projectile;
+	[Export] private PackedScene _explosion;
+	[Export] private Area2D _hitArea;
+	[Export] private HealthBar _healthBar;
 	[Export] private Marker2D _shootPoint;
 	[Export] private Timer _projectileTimer;
 	[Export] private float _projectileWaitTime = 3.0f;
@@ -24,12 +27,29 @@ public partial class EnemyBase : PathFollow2D
 	private void SubscribeToSignals()
 	{
 		_projectileTimer.Timeout += OnProjectileTimerTimeout;
+		_healthBar.HealthBarDepleted += OnHealthBarDepleted;
+		_hitArea.AreaEntered += OnHitAreaEntered;
 	}
 
 	private void OnProjectileTimerTimeout()
 	{
 		FireWeapon();
 		StartTimer();
+	}
+
+	private void OnHealthBarDepleted()
+	{
+		SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosion);
+		CustomUtils.ActivateArea2D(_hitArea, false);
+		PlayObjectDestroyedTween();
+	}
+
+	private void OnHitAreaEntered(Area2D area)
+	{
+		if (area is Projectile projectile && _healthBar.Value > 0)
+		{
+			_healthBar.TakeDamage(projectile.Damage);
+		}
 	}
 
 	private void MoveAlongPath(double delta)
@@ -62,5 +82,20 @@ public partial class EnemyBase : PathFollow2D
 	private void StartTimer()
 	{
 		CustomUtils.SetAndStartTimer(_projectileTimer, _projectileWaitTime, _projectileTimeVariance);
+	}
+
+	private void PlayObjectDestroyedTween()
+	{
+		Tween tween = CreateTween();
+
+		var tweenDuration = 0.25f;
+		tween.TweenProperty(
+			this,
+			CanvasItem.PropertyName.Modulate.ToString(),
+			new Color("#ff0000"),
+			tweenDuration
+		);
+
+		tween.TweenCallback(Callable.From(QueueFree));
 	}
 }

@@ -18,3 +18,9 @@ shape = SubResource("CircleShape2D_ooqht")
 
 [node name="ShootPoint" parent="." index="3" unique_id=1851279631]
 position = Vector2(0, 21)
+
+[node name="HealthBar" parent="." index="4" unique_id=1155453817]
+offset_left = -50.0
+offset_top = -55.0
+offset_right = 50.0
+offset_bottom = -49.0

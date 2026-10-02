@@ -12,6 +12,9 @@ public partial class Projectile : Area2D, IPoolItem
 	[Export] private Marker2D _explosionMarker;
 	[Export] private bool _usesMarker;
 	[Export] private float _explosionMargin = 30.0f;
+	[Export] private int _damage = 10;
+
+	public int Damage => _damage;
 
 	private Player _playerRef;	
 	private Vector2 _velocity;

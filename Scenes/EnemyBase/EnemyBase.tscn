@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://byr6g5srlk1fd" path="res://Scenes/EnemyBase/EnemyBase.cs" id="1_coq1q"]
 [ext_resource type="PackedScene" uid="uid://bsn6kf7tvruov" path="res://Scenes/Projectile/EnemyLaser.tscn" id="2_7id8g"]
+[ext_resource type="PackedScene" uid="uid://beld5igr0ionw" path="res://Scenes/HealthBar/HealthBar.tscn" id="3_c8gye"]
+[ext_resource type="PackedScene" uid="uid://bfuf7fqe5siqf" path="res://Scenes/Explosion/Explosion.tscn" id="3_cid6p"]
 
-[node name="EnemyBase" type="PathFollow2D" unique_id=287976235 node_paths=PackedStringArray("_shootPoint", "_projectileTimer")]
+[node name="EnemyBase" type="PathFollow2D" unique_id=287976235 node_paths=PackedStringArray("_hitArea", "_healthBar", "_shootPoint", "_projectileTimer")]
 rotates = false
 loop = false
 script = ExtResource("1_coq1q")
 _projectile = ExtResource("2_7id8g")
+_explosion = ExtResource("3_cid6p")
+_hitArea = NodePath("HitArea")
+_healthBar = NodePath("HealthBar")
 _shootPoint = NodePath("ShootPoint")
 _projectileTimer = NodePath("ProjectileTimer")
 _projectileWaitTime = 2.0
@@ -26,3 +31,5 @@ wait_time = 3.0
 one_shot = true
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1851279631]
+
+[node name="HealthBar" parent="." unique_id=1155453817 instance=ExtResource("3_c8gye")]
