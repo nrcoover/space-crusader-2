@@ -87,7 +87,7 @@ test={
 2d_physics/layer_3="player_bullet"
 2d_physics/layer_4="enemy_bullet"
 2d_physics/layer_5="power_up"
-2d_physics/layer_6="asteriod"
+2d_physics/layer_6="asteroid"
 2d_physics/layer_7="enemy_bomb"
 
 [physics]
