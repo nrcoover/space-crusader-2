@@ -7,6 +7,9 @@
 radius = 53.0
 
 [node name="EnemyVee" unique_id=287976235 instance=ExtResource("1_1bh77")]
+_speed = 200.0
+_projectileWaitTime = 5.0
+_projectileTimeVariance = 2.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=101752845]
 rotation = 3.1415927
