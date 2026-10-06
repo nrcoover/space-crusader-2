@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://35on0qom10fx"]
 
 [ext_resource type="Script" uid="uid://djtx8os8wg1qb" path="res://Scenes/ObjectContainer/ObjectContainer.cs" id="1_3j8x0"]
-[ext_resource type="PackedScene" uid="uid://cva5se8yem3vj" path="res://Scenes/Explosion/PlayerLaserExplosion.tscn" id="2_mynqv"]
+[ext_resource type="PackedScene" uid="uid://b1ksucb0j118s" path="res://Scenes/HomingMissile/HomingMissile.tscn" id="2_mynqv"]
 
 [node name="ObjectContainer" type="Node" unique_id=1429712529]
 script = ExtResource("1_3j8x0")
