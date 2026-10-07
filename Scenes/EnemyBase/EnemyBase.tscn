@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bsn6kf7tvruov" path="res://Scenes/Projectile/EnemyLaser.tscn" id="2_7id8g"]
 [ext_resource type="PackedScene" uid="uid://beld5igr0ionw" path="res://Scenes/HealthBar/HealthBar.tscn" id="3_c8gye"]
 [ext_resource type="PackedScene" uid="uid://bfuf7fqe5siqf" path="res://Scenes/Explosion/Explosion.tscn" id="3_cid6p"]
+[ext_resource type="PackedScene" uid="uid://b1ksucb0j118s" path="res://Scenes/HomingMissile/HomingMissile.tscn" id="4_decn8"]
 
 [node name="EnemyBase" type="PathFollow2D" unique_id=287976235 node_paths=PackedStringArray("_hitArea", "_healthBar", "_shootPoint", "_projectileTimer")]
 rotates = false
@@ -11,6 +12,7 @@ loop = false
 script = ExtResource("1_coq1q")
 _projectile = ExtResource("2_7id8g")
 _explosion = ExtResource("3_cid6p")
+_missileScene = ExtResource("4_decn8")
 _hitArea = NodePath("HitArea")
 _healthBar = NodePath("HealthBar")
 _shootPoint = NodePath("ShootPoint")

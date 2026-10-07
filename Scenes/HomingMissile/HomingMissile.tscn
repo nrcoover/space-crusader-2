@@ -19,6 +19,7 @@ height = 68.0
 script = ExtResource("1_m0p1j")
 _hitArea = NodePath("HitArea")
 _invincibleTimer = NodePath("Timer")
+_speed = 85.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1920581776]
 position = Vector2(-35, -1)

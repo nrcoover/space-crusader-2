@@ -4,8 +4,8 @@ public partial class HomingMissile : Node2D, IPoolItem
 {
   [Export] private Area2D _hitArea;
   [Export] private Timer _invincibleTimer;
-  [Export] private float _speed = 50.0f;
-  [Export] private float _rotationSpeed = 1.0f;
+  [Export] private float _speed = 100.0f;
+  [Export] private float _rotationSpeed = 2.0f;
 
   private Player _playerRef;
   private bool _invincible = false;

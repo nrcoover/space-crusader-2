@@ -7,7 +7,8 @@ public partial class Projectile : Area2D, IPoolItem
 	[Export] private Vector2 _direction = Vector2.Zero;
 	[Export] private bool _isMovingTowardsPlayer = false;
 	[Export] private VisibleOnScreenNotifier2D _notifier;
-	[Export] private LifeTime _lifeTime;
+	[Export] private AudioStreamPlayer2D _launchSound;
+	[Export] private Timer _lifeTimer;
 	[Export] private PackedScene _explosionScene;
 	[Export] private Marker2D _explosionMarker;
 	[Export] private bool _usesMarker;
@@ -32,27 +33,30 @@ public partial class Projectile : Area2D, IPoolItem
 	}
 
 	public void Activate() {
+		StartLifetimeTimer();
 		CustomUtils.ActivateArea2D(this, true);
 		SetDirection();
 		SetVelocity();
 		SetPhysicsProcess(true);
+		PlayAudio();
 	}
 
 	public void DeActivate() {
 		CustomUtils.ActivateArea2D(this, false);
 		SetPhysicsProcess(false);
 		Hide();
+		StopLifetimeTimer();
 	}
 
 	private void SubscribeToSignals() {
-		_lifeTime.LifeTimeExpired += OnLifeTimeExpired;
+		_lifeTimer.Timeout += OnLifeTimerTimeout;
 		_notifier.ScreenExited += OnScreenExited;
 		AreaEntered += OnAreaEntered;
 	}
 
-	private void OnLifeTimeExpired() {
-		// GD.Print($"{Name} OnLifeTimeExpired!");
-		// CallDeferred(MethodName.QueueFree);
+	private void OnLifeTimerTimeout() {
+		GD.Print($"{Name} OnLifeTimerTimeout!");
+		DeActivate();
 	}
 
 	private void OnScreenExited() {
@@ -98,5 +102,20 @@ public partial class Projectile : Area2D, IPoolItem
 
 	private void SetPosition(double delta) {
 		Position += _velocity * (float)delta;
+	}
+
+	private void StartLifetimeTimer()
+	{
+		_lifeTimer.Start();
+	}
+
+	private void StopLifetimeTimer()
+	{
+		_lifeTimer.Stop();
+	}
+
+	private void PlayAudio()
+	{
+		_launchSound.Play();
 	}
 }

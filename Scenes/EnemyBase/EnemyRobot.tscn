@@ -9,6 +9,7 @@ radius = 48.0
 
 [node name="EnemyRobot" unique_id=287976235 instance=ExtResource("1_ooqht")]
 _speed = 180.0
+_missileChance = 0.6
 _projectile = ExtResource("2_cci5b")
 _projectileWaitTime = 6.0
 _projectileTimeVariance = 2.0
@@ -27,3 +28,7 @@ offset_left = -50.0
 offset_top = -55.0
 offset_right = 50.0
 offset_bottom = -49.0
+_levelLow = 15
+_levelMedium = 30
+_maxHealth = 45
+_startHealth = 45

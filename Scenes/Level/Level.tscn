@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://35on0qom10fx" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_4dwx7"]
 [ext_resource type="PackedScene" uid="uid://c2b3a4n3q5sa0" path="res://Scenes/Spawner/Spawner.tscn" id="4_qp1lj"]
 [ext_resource type="PackedScene" uid="uid://dkbuuk442icf" path="res://Scenes/WaveManager/WaveManager.tscn" id="5_k2uda"]
+[ext_resource type="AudioStream" uid="uid://cld4vsvsehfwe" path="res://Assets/Sounds/830558__universfield__dark-80s-sci-fi-atmosphere.mp3" id="6_ksici"]
 
 [node name="Level" type="Node" unique_id=1890165430]
 
@@ -18,3 +19,10 @@ position = Vector2(690, 887)
 [node name="Spawner" parent="." unique_id=416365083 instance=ExtResource("4_qp1lj")]
 
 [node name="WaveManager" parent="." unique_id=1203427396 instance=ExtResource("5_k2uda")]
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1224508336]
+stream = ExtResource("6_ksici")
+volume_db = -8.0
+pitch_scale = 1.25
+autoplay = true
+parameters/looping = true

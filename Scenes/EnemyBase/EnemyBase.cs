@@ -4,8 +4,10 @@ using Godot;
 public partial class EnemyBase : PathFollow2D
 {
 	[Export] private float _speed = 100;
+	[Export] private float _missileChance = 0.8f;
 	[Export] private PackedScene _projectile;
 	[Export] private PackedScene _explosion;
+	[Export] private PackedScene _missileScene;
 	[Export] private Area2D _hitArea;
 	[Export] private HealthBar _healthBar;
 	[Export] private Marker2D _shootPoint;
@@ -40,6 +42,9 @@ public partial class EnemyBase : PathFollow2D
 	private void OnHealthBarDepleted()
 	{
 		SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosion);
+
+		HandleMissileCreation();
+
 		CustomUtils.ActivateArea2D(_hitArea, false);
 		PlayObjectDestroyedTween();
 	}
@@ -82,6 +87,14 @@ public partial class EnemyBase : PathFollow2D
 	private void StartTimer()
 	{
 		CustomUtils.SetAndStartTimer(_projectileTimer, _projectileWaitTime, _projectileTimeVariance);
+	}
+
+	private void HandleMissileCreation()
+	{
+		if (GD.Randf() < _missileChance)
+		{
+			SignalManager.EmitSpawnPoolObject(GlobalPosition, _missileScene);
+		}
 	}
 
 	private void PlayObjectDestroyedTween()

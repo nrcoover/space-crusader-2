@@ -5,14 +5,13 @@ public partial class Asteroid : Node2D
 	[Export] private int _hits = 5;
 	[Export] private float _speed = 50.0f;
 	[Export] private float _rotationSpeedDegrees = 10.0f;
-	[Export] private float _lifeTime = 10.0f;
+	[Export] private Timer _lifeTimer;
 	[Export] private Sprite2D _sprite;
 	[Export] private Area2D _hitArea;
 	[Export] private PackedScene _explosionScene;
 	[Export] private Godot.Collections.Array<Texture2D> _textures;
 
 	private Vector2 _velocity = Vector2.Right;
-	private float _timeAlive = 0.0f;
 
 #region Overrides
 
@@ -26,7 +25,6 @@ public partial class Asteroid : Node2D
 	{
 		Move(delta);
 		Rotate(delta);
-		IncrementTimeAlive(delta);
 		HandleObjectRemoval();
 	}
 
@@ -54,12 +52,19 @@ public partial class Asteroid : Node2D
 	private void SubscribeToSignals()
 	{
 		_hitArea.AreaEntered += OnAreaEntered;
+		_lifeTimer.Timeout += OnLifeTimerTimeout;
 	}
 
 	private void OnAreaEntered(Area2D area)
 	{
 		DecrementHits();
 		HandleObjectRemoval();
+	}
+
+	private void OnLifeTimerTimeout()
+	{
+		GD.Print($"{Name} OnLifeTimerTimeout!");
+		BlowUp();
 	}
 
 #endregion
@@ -84,11 +89,6 @@ public partial class Asteroid : Node2D
 		RotationDegrees += _rotationSpeedDegrees * (float)delta;
 	}
 
-	private void IncrementTimeAlive(double delta)
-	{
-		_timeAlive += (float)delta;
-	}
-
 	private void DecrementHits()
 	{
 		_hits--;
@@ -96,7 +96,7 @@ public partial class Asteroid : Node2D
 
 	private void HandleObjectRemoval()
 	{
-		if (_timeAlive > _lifeTime || _hits <= 0)
+		if (_hits <= 0)
 		{
 			BlowUp();
 		}

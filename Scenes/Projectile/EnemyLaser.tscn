@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3a2dss42f67n" path="res://Scenes/Projectile/Projectile.tscn" id="1_onq3f"]
 [ext_resource type="Texture2D" uid="uid://ovwis5cywhb" path="res://Assets/Images/LaserOrange.png" id="2_4kgsm"]
 [ext_resource type="PackedScene" uid="uid://eyii85lowr8d" path="res://Scenes/Explosion/EnemyLaserExplosion.tscn" id="2_10ohv"]
+[ext_resource type="AudioStream" uid="uid://cm7ly1cmmffuy" path="res://Assets/Sounds/Blaster1_short.wav" id="4_ona4s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4kgsm"]
 radius = 4.0
@@ -28,3 +29,6 @@ rect = Rect2(-10, -37, 20, 74)
 
 [node name="ExplosionPosition" parent="." index="3" unique_id=369562670]
 position = Vector2(0, 35)
+
+[node name="LaunchSound" parent="." index="4" unique_id=1059040564]
+stream = ExtResource("4_ona4s")
