@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Player : Area2D
 {
@@ -19,7 +18,21 @@ public partial class Player : Area2D
 
 	public override void _Ready()
 	{
+		SubscribeToSignals();
 		SetLimits();
+	}
+
+	private void SubscribeToSignals()
+	{
+		AreaEntered += OnAreaEntered;
+	}
+
+	private void OnAreaEntered(Area2D area)
+	{
+		if (area is Projectile projectile)
+		{
+			SignalManager.EmitPlayerTakeDamage(projectile.Damage);
+		}
 	}
 
 	private void SetLimits() {
