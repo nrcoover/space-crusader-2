@@ -31,6 +31,8 @@ public partial class HealthBar : TextureProgressBar
 			_isDead = true;
 			EmitSignal(SignalName.HealthBarDepleted);
 		}
+
+		SetColor();
 	}
 
 	public void TakeDamage(int value)
