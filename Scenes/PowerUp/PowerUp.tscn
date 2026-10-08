@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://b31c2em58fv50"]
+
+[ext_resource type="Script" uid="uid://dsbvsgonhbdbg" path="res://Scenes/PowerUp/PowerUp.cs" id="1_3hf71"]
+[ext_resource type="Texture2D" uid="uid://cd0bosuquolqe" path="res://Assets/Textures/light_03.png" id="1_rbyb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbyb8"]
+radius = 43.011627
+
+[sub_resource type="Animation" id="Animation_3hf71"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rbyb8"]
+resource_name = "flash"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.25, 0.25), Vector2(0.175, 0.175), Vector2(0.2, 0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.9882353, 1, 1), Color(0, 0.9882353, 1, 0.5568628), Color(0, 0.9882353, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hf71"]
+_data = {
+&"RESET": SubResource("Animation_3hf71"),
+&"flash": SubResource("Animation_rbyb8")
+}
+
+[node name="PowerUp" type="Area2D" unique_id=357533122 node_paths=PackedStringArray("_timer", "_healthBoostAudio")]
+collision_layer = 0
+script = ExtResource("1_3hf71")
+_timer = NodePath("Timer")
+_healthBoostAudio = NodePath("HealthBoostAudio")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=933841191]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_rbyb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2069220741]
+shape = SubResource("CircleShape2D_rbyb8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1769019058]
+libraries/ = SubResource("AnimationLibrary_3hf71")
+autoplay = &"flash"
+
+[node name="Timer" type="Timer" parent="." unique_id=1142038432]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="HealthBoostAudio" type="AudioStreamPlayer2D" parent="." unique_id=1856044112]

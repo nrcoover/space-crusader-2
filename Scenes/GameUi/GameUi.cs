@@ -32,17 +32,24 @@ public partial class GameUi : Control
 	private void SubscribeToSignals()
 	{
 		SignalManager.Instance.PlayerTakeDamage += OnPlayerTakeDamage;
+		SignalManager.Instance.PlayerHealthBoost += OnPlayerHealthBoost;
 		_healthBar.HealthBarDepleted += OnHealthBarDepleted;
 	}
 
 	private void UnsubscribeFromSignals()
 	{
 		SignalManager.Instance.PlayerTakeDamage -= OnPlayerTakeDamage;
+		SignalManager.Instance.PlayerHealthBoost -= OnPlayerHealthBoost;
 	}
 
 	private void OnPlayerTakeDamage(int damage)
 	{
 		_healthBar.TakeDamage(damage);
+	}
+
+	private void OnPlayerHealthBoost(int health)
+	{
+		_healthBar.IncrementValue(health);
 	}
 
 	private void OnHealthBarDepleted()

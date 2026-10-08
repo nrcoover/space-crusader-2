@@ -6,6 +6,8 @@ public partial class Spawner : Node
 	[Export] private Path2D _asteroidTargetPath;
 	[Export] private PackedScene _asteroidScene;
 	[Export] private Timer _asteroidSpawnTimer;
+	[Export] private PackedScene _powerUpScene;
+	[Export] private Timer _powerUpSpawnTimer;
 
 	public override void _Ready()
 	{
@@ -18,6 +20,7 @@ public partial class Spawner : Node
 	private void SubscribeToSignals()
 	{
 		_asteroidSpawnTimer.Timeout += OnAsteroidSpawnTimeout;
+		_powerUpSpawnTimer.Timeout += OnPowerUpSpawnTimeout;
 	}
 
 	private void OnAsteroidSpawnTimeout()
@@ -25,6 +28,12 @@ public partial class Spawner : Node
 		Asteroid asteroid = _asteroidScene.Instantiate<Asteroid>();
 		SetRandomSpawnAndTarget(asteroid);
 		AddChild(asteroid);
+	}
+
+	private void OnPowerUpSpawnTimeout()
+	{
+		PowerUp powerUp = _powerUpScene.Instantiate<PowerUp>();
+		AddChild(powerUp);
 	}
 
 	private Vector2 GetRandomPointOnCurve(Curve2D curve)
