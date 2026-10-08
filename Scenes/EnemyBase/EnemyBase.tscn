@@ -13,7 +13,7 @@ script = ExtResource("1_coq1q")
 _projectile = ExtResource("2_7id8g")
 _explosion = ExtResource("3_cid6p")
 _missileScene = ExtResource("4_decn8")
-_hitArea = NodePath("HitArea")
+_hitArea = NodePath("EnemyBaseHitArea")
 _healthBar = NodePath("HealthBar")
 _shootPoint = NodePath("ShootPoint")
 _projectileTimer = NodePath("ProjectileTimer")
@@ -22,11 +22,11 @@ _projectileTimeVariance = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=101752845]
 
-[node name="HitArea" type="Area2D" parent="." unique_id=299925371]
+[node name="EnemyBaseHitArea" type="Area2D" parent="." unique_id=299925371 groups=["Collision"]]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1693853168]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBaseHitArea" unique_id=1693853168]
 
 [node name="ProjectileTimer" type="Timer" parent="." unique_id=1541997697]
 wait_time = 3.0

@@ -7,6 +7,7 @@ public partial class Player : Area2D
 	[Export] private float _speed = 500;
 	[Export] private PackedScene _playerLaser;
 	[Export] private Marker2D _shootPoint;
+	[Export] private int _collisionDamage = 30;
 
 	private Vector2 _upperLeft;
 	private Vector2 _lowerRight;
@@ -32,6 +33,11 @@ public partial class Player : Area2D
 		if (area is Projectile projectile)
 		{
 			SignalManager.EmitPlayerTakeDamage(projectile.Damage);
+		}
+		else if (area.IsInGroup(Constants.GroupName.COLLISION))
+		{
+			GD.Print("Collision Damage, ", area.Name);
+			SignalManager.EmitPlayerTakeDamage(_collisionDamage);
 		}
 	}
 

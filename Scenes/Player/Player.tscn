@@ -10,7 +10,7 @@ radius = 49.09175
 
 [node name="Player" type="Area2D" unique_id=436121510 node_paths=PackedStringArray("_shootPoint")]
 z_index = 50
-collision_mask = 8
+collision_mask = 42
 script = ExtResource("1_h54ih")
 _playerLaser = ExtResource("2_ude3g")
 _shootPoint = NodePath("ShootPoint")
