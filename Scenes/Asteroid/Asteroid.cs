@@ -4,6 +4,7 @@ public partial class Asteroid : Node2D
 {
 	[Export] private int _hits = 5;
 	[Export] private float _speed = 50.0f;
+	[Export] private int _points = 20;
 	[Export] private float _rotationSpeedDegrees = 10.0f;
 	[Export] private Timer _lifeTimer;
 	[Export] private Sprite2D _sprite;
@@ -105,6 +106,8 @@ public partial class Asteroid : Node2D
 	private void BlowUp()
 	{
 		SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosionScene);
+		SignalManager.EmitPlayerScored(_points);
+		
 		CallDeferred(MethodName.QueueFree);
 	}
 }

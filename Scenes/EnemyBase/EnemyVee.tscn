@@ -9,6 +9,7 @@ radius = 53.0
 [node name="EnemyVee" unique_id=287976235 instance=ExtResource("1_1bh77")]
 _speed = 200.0
 _missileChance = 0.4
+_points = 35
 _projectileWaitTime = 5.0
 _projectileTimeVariance = 2.0
 
@@ -17,7 +18,7 @@ rotation = 3.1415927
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_n3nei")
 
-[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(299925371) index="0" unique_id=1693853168]
+[node name="CollisionShape2D" parent="EnemyBaseHitArea" parent_id_path=PackedInt32Array(299925371) index="0" unique_id=1693853168]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_h21tv")
 

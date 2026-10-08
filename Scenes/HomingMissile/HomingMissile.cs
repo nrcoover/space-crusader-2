@@ -6,6 +6,7 @@ public partial class HomingMissile : Node2D, IPoolItem
   [Export] private Timer _invincibleTimer;
   [Export] private float _speed = 100.0f;
   [Export] private float _rotationSpeed = 2.0f;
+  [Export] private int _points = 12;
 
   private Player _playerRef;
   private bool _invincible = false;
@@ -53,6 +54,8 @@ public partial class HomingMissile : Node2D, IPoolItem
     {
       return;
     }
+
+    SignalManager.EmitPlayerScored(_points);
 
     DeActivate();
   }

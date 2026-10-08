@@ -5,6 +5,7 @@ public partial class EnemyBase : PathFollow2D
 {
 	[Export] private float _speed = 100;
 	[Export] private float _missileChance = 0.8f;
+	[Export] private int _points = 20;
 	[Export] private PackedScene _projectile;
 	[Export] private PackedScene _explosion;
 	[Export] private PackedScene _missileScene;
@@ -42,6 +43,7 @@ public partial class EnemyBase : PathFollow2D
 	private void OnHealthBarDepleted()
 	{
 		SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosion);
+		SignalManager.EmitPlayerScored(_points);
 
 		HandleMissileCreation();
 

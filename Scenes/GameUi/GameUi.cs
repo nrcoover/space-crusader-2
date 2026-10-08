@@ -8,6 +8,8 @@ public partial class GameUi : Control
 	[Export] private AudioStreamPlayer _musicPlayer;
 	[Export] private AudioStreamPlayer _gameOverSoundPlayer;
 
+	private int _score = 0;
+
 	public override void _Ready()
 	{
 		GetTree().Paused = false;
@@ -33,6 +35,7 @@ public partial class GameUi : Control
 	{
 		SignalManager.Instance.PlayerTakeDamage += OnPlayerTakeDamage;
 		SignalManager.Instance.PlayerHealthBoost += OnPlayerHealthBoost;
+		SignalManager.Instance.PlayerScored += OnPlayerScored;
 		_healthBar.HealthBarDepleted += OnHealthBarDepleted;
 	}
 
@@ -40,6 +43,7 @@ public partial class GameUi : Control
 	{
 		SignalManager.Instance.PlayerTakeDamage -= OnPlayerTakeDamage;
 		SignalManager.Instance.PlayerHealthBoost -= OnPlayerHealthBoost;
+		SignalManager.Instance.PlayerScored -= OnPlayerScored;
 	}
 
 	private void OnPlayerTakeDamage(int damage)
@@ -60,6 +64,12 @@ public partial class GameUi : Control
 		GetTree().Paused = true;
 	}
 
+	private void OnPlayerScored(int points)
+	{
+		_score += points;
+		UpdateScoreLabel();
+	}
+
 	private void ShowGameOverScreen()
 	{
 		_gameOverColorRect.Show();
@@ -73,5 +83,10 @@ public partial class GameUi : Control
 	private void PlayGameOverAudio()
 	{
 		_gameOverSoundPlayer.Play();
+	}
+
+	private void UpdateScoreLabel()
+	{
+		_scoreLabel.Text = _score.ToString("D5");
 	}
 }

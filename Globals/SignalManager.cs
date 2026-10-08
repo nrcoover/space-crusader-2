@@ -7,6 +7,7 @@ public partial class SignalManager : Node
 	[Signal] public delegate void SpawnPoolObjectEventHandler(Vector2 position, PackedScene scene);
 	[Signal] public delegate void PlayerTakeDamageEventHandler(int damage);
 	[Signal] public delegate void PlayerHealthBoostEventHandler(int health);
+	[Signal] public delegate void PlayerScoredEventHandler(int score);
 
 	public override void _Ready()
 	{
@@ -26,5 +27,10 @@ public partial class SignalManager : Node
 	public static void EmitPlayerHealthBoost(int health)
 	{
 		Instance.EmitSignal(SignalName.PlayerHealthBoost, health);
+	}
+
+	public static void EmitPlayerScored(int score)
+	{
+		Instance.EmitSignal(SignalName.PlayerScored, score);
 	}
 }

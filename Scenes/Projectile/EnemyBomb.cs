@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+// TODO: Set Bomb to give points when destroyed by player bullet 
 public partial class EnemyBomb : Projectile
 {
 	[Export] private Sprite2D _sprite;
@@ -10,7 +11,7 @@ public partial class EnemyBomb : Projectile
 	public override void _Ready() {
 		base._Ready();
 
-		//TODO: set this rotation speed with helper function to generate random direction and speed
+		// TODO: set this rotation speed with helper function to generate random direction and speed
 		_rotationSpeed = 1.0f;
 	}
 	

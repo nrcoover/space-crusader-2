@@ -10,6 +10,7 @@ radius = 48.0
 [node name="EnemyRobot" unique_id=287976235 instance=ExtResource("1_ooqht")]
 _speed = 180.0
 _missileChance = 0.6
+_points = 40
 _projectile = ExtResource("2_cci5b")
 _projectileWaitTime = 6.0
 _projectileTimeVariance = 2.0
@@ -17,7 +18,7 @@ _projectileTimeVariance = 2.0
 [node name="Sprite2D" parent="." index="0" unique_id=101752845]
 texture = ExtResource("2_j6d8t")
 
-[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(299925371) index="0" unique_id=1693853168]
+[node name="CollisionShape2D" parent="EnemyBaseHitArea" parent_id_path=PackedInt32Array(299925371) index="0" unique_id=1693853168]
 shape = SubResource("CircleShape2D_ooqht")
 
 [node name="ShootPoint" parent="." index="3" unique_id=1851279631]
