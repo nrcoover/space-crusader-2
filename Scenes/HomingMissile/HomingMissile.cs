@@ -4,6 +4,7 @@ public partial class HomingMissile : Node2D, IPoolItem
 {
   [Export] private Area2D _hitArea;
   [Export] private Timer _invincibleTimer;
+  [Export] private PackedScene _explosionScene;
   [Export] private float _speed = 100.0f;
   [Export] private float _rotationSpeed = 2.0f;
   [Export] private int _points = 12;
@@ -50,6 +51,11 @@ public partial class HomingMissile : Node2D, IPoolItem
 
   private void OnHitAreaEntered(Area2D area)
   {
+    if (area is Player)
+    {
+      SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosionScene);
+    }
+
     if (_invincible)
     {
       return;

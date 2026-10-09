@@ -16,6 +16,8 @@ public partial class EnemyBase : PathFollow2D
 	[Export] private float _projectileWaitTime = 3.0f;
 	[Export] private float _projectileTimeVariance = 0.75f;
 
+	private bool _isDead = false;
+
 	public override void _Ready()
 	{
 		SubscribeToSignals();
@@ -42,6 +44,13 @@ public partial class EnemyBase : PathFollow2D
 
 	private void OnHealthBarDepleted()
 	{
+		if (_isDead)
+		{
+			return;
+		}
+
+		_isDead = true;
+
 		SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosion);
 		SignalManager.EmitPlayerScored(_points);
 
@@ -53,6 +62,19 @@ public partial class EnemyBase : PathFollow2D
 
 	private void OnHitAreaEntered(Area2D area)
 	{
+		if (_isDead)
+		{
+			return;
+		}
+
+		if (area is Player)
+		{
+			_isDead = true;
+			SignalManager.EmitSpawnPoolObject(GlobalPosition, _explosion);
+			CustomUtils.ActivateArea2D(_hitArea, false);
+			CallDeferred(MethodName.QueueFree);
+		}
+
 		if (area is Projectile projectile && _healthBar.Value > 0)
 		{
 			_healthBar.TakeDamage(projectile.Damage);

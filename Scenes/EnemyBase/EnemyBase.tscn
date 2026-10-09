@@ -24,7 +24,7 @@ _projectileTimeVariance = 1.0
 
 [node name="EnemyBaseHitArea" type="Area2D" parent="." unique_id=299925371 groups=["Collision"]]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBaseHitArea" unique_id=1693853168]
 

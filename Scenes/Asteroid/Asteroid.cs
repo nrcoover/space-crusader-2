@@ -58,6 +58,12 @@ public partial class Asteroid : Node2D
 
 	private void OnAreaEntered(Area2D area)
 	{
+		if (area is Player)
+		{
+			BlowUp();
+			return;	
+		}
+		
 		DecrementHits();
 		HandleObjectRemoval();
 	}
