@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cva5se8yem3vj"]
+
+[ext_resource type="PackedScene" uid="uid://bfuf7fqe5siqf" path="res://Scenes/Explosion/Explosion.tscn" id="1_7de2m"]
+[ext_resource type="AudioStream" uid="uid://c10gvgsxbj50n" path="res://Assets/Sounds/252198__pepingrillin__rocket_impact_short.wav" id="2_cmpx7"]
+[ext_resource type="Texture2D" uid="uid://dj030lwgni7m7" path="res://Assets/Textures/MagicSmall.png" id="2_kl4tg"]
+
+[sub_resource type="Curve" id="Curve_kl4tg"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.48885977), 0.0, 0.0, 0, 0, Vector2(0.3538961, 0.71035385), 0.0, 0.0, 0, 0, Vector2(0.7305195, -0.891219), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="PlayerLaserExplosion" unique_id=1925007399 instance=ExtResource("1_7de2m")]
+z_index = 120
+
+[node name="CPUParticles2D" parent="." index="0" unique_id=1744808512]
+texture = ExtResource("2_kl4tg")
+emission_sphere_radius = 6.0
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+color = Color(0.9701418, 2.22383, 2.40685, 1)
+color_ramp = null
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_kl4tg")
+
+[node name="AudioStreamPlayer2D" parent="." index="1" unique_id=1288790364]
+stream = ExtResource("2_cmpx7")

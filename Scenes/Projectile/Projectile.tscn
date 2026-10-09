@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c3a2dss42f67n"]
+
+[ext_resource type="Script" uid="uid://gvfcwbikr4eg" path="res://Scenes/Projectile/Projectile.cs" id="1_nhk4o"]
+
+[node name="Projectile" type="Area2D" unique_id=85650039 node_paths=PackedStringArray("_notifier", "_launchSound", "_lifeTimer")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_nhk4o")
+_notifier = NodePath("Notifier")
+_launchSound = NodePath("LaunchSound")
+_lifeTimer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=904177555]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169443599]
+
+[node name="Notifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=246919367]
+
+[node name="ExplosionPosition" type="Marker2D" parent="." unique_id=369562670]
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1059040564]
+
+[node name="Timer" type="Timer" parent="." unique_id=454926609]
+wait_time = 10.0
+one_shot = true

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bk2pycyugbje5"]
+
+[ext_resource type="PackedScene" uid="uid://c3a2dss42f67n" path="res://Scenes/Projectile/Projectile.tscn" id="1_d8pwx"]
+[ext_resource type="PackedScene" uid="uid://cva5se8yem3vj" path="res://Scenes/Explosion/PlayerLaserExplosion.tscn" id="2_0fhu1"]
+[ext_resource type="Texture2D" uid="uid://7f6e4qimmxs8" path="res://Assets/Images/LaserBlue.png" id="2_tlr11"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tlr11"]
+radius = 8.0
+height = 84.0
+
+[node name="PlayerLaser" unique_id=85650039 node_paths=PackedStringArray("_explosionMarker") instance=ExtResource("1_d8pwx")]
+collision_layer = 4
+collision_mask = 98
+_speed = 750.0
+_direction = Vector2(0, -1)
+_explosionScene = ExtResource("2_0fhu1")
+_explosionMarker = NodePath("ExplosionPosition")
+_usesMarker = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=904177555]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_tlr11")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1169443599]
+shape = SubResource("CapsuleShape2D_tlr11")
+
+[node name="Notifier" parent="." index="2" unique_id=246919367]
+rect = Rect2(-11, -45, 22, 90)
+
+[node name="ExplosionPosition" parent="." index="3" unique_id=369562670]
+position = Vector2(0, -44)

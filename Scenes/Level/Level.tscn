@@ -1,3 +1,33 @@
 [gd_scene format=3 uid="uid://fqg817ao1rgs"]
 
+[ext_resource type="PackedScene" uid="uid://bo6oq0pbaoiyg" path="res://Scenes/Stars/Stars.tscn" id="1_vbawi"]
+[ext_resource type="PackedScene" uid="uid://cexarfbemv5n" path="res://Scenes/Player/Player.tscn" id="2_3hkb6"]
+[ext_resource type="PackedScene" uid="uid://35on0qom10fx" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_4dwx7"]
+[ext_resource type="PackedScene" uid="uid://c2b3a4n3q5sa0" path="res://Scenes/Spawner/Spawner.tscn" id="4_qp1lj"]
+[ext_resource type="PackedScene" uid="uid://dkbuuk442icf" path="res://Scenes/WaveManager/WaveManager.tscn" id="5_k2uda"]
+[ext_resource type="PackedScene" uid="uid://bmi0h8rnklrxo" path="res://Scenes/GameUi/GameUi.tscn" id="6_ksici"]
+[ext_resource type="PackedScene" uid="uid://b31c2em58fv50" path="res://Scenes/PowerUp/PowerUp.tscn" id="7_8gphe"]
+
 [node name="Level" type="Node" unique_id=1890165430]
+
+[node name="Stars" parent="." unique_id=1285456462 instance=ExtResource("1_vbawi")]
+
+[node name="Player" parent="." unique_id=436121510 instance=ExtResource("2_3hkb6")]
+position = Vector2(690, 887)
+
+[node name="ObjectContainer" parent="." unique_id=1429712529 instance=ExtResource("3_4dwx7")]
+
+[node name="Spawner" parent="." unique_id=416365083 instance=ExtResource("4_qp1lj")]
+
+[node name="WaveManager" parent="." unique_id=1203427396 instance=ExtResource("5_k2uda")]
+
+[node name="GameUi" parent="." unique_id=1853643996 instance=ExtResource("6_ksici")]
+
+[node name="PowerUp" parent="." unique_id=357533122 instance=ExtResource("7_8gphe")]
+position = Vector2(514, 99)
+
+[node name="PowerUp2" parent="." unique_id=1050181549 instance=ExtResource("7_8gphe")]
+position = Vector2(818, 187)
+
+[node name="PowerUp3" parent="." unique_id=72686071 instance=ExtResource("7_8gphe")]
+position = Vector2(1208, 115)
